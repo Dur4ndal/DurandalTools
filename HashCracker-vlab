@@ -1,0 +1,32 @@
+#!/bin/bash
+
+for palavra in $(cat /usr/share/john/password.lst)
+do
+echo -n $palavra | md5sum |cut -d " " -f 1 >senhaMD5
+#echo $palavra
+
+for palavraMD5 in $(cat senhaMD5)
+do
+base64 senhaMD5 > senhaBASE64
+#echo $palavraMD5
+
+for palavraBASE64 in $(cat senhaBASE64)
+do
+
+palavraBASE64mod="${palavraBASE64::-1}="
+echo -n $palavraBASE64mod | sha1sum | cut -d " " -f 1 > senhaSHA1
+#echo $palavraBASE64
+
+senha=$(cat senhaSHA1)
+echo $senha >> TESTEDESSAPORRA
+#echo $senha
+
+#Caso o user quiser, apenas passar o argv[1] para ser comparado
+if [ $senha == "806825f0827b628e81620f0d83922fb2c52c7136" ];
+then
+        echo "Senha encontrada --------->" $palavra
+        break
+fi
+done
+done
+done
