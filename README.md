@@ -1,15 +1,5 @@
 # DurandalTools
-1.
-  Ferramenta mestre para Pentest com conexão direta à superfície de ataque.
-  Banner grabber
-  HTML parser 
-  Socket connector 
-  Host and service sweeper
-
-2. (FUNCIONAL APENAS PARA BASH ACIMA DE 4.2)
-  Ferramenta para "quebra" de hashes utilizando a wordlist do John. Seguindo a metodologia para crypt:
-    1-> MD5
-    2-> BASE64
-    3-> SHA1
-    
-by: Durandal (Rodr_Mamedio)
+1. My simple backup for scripts, conf files, default CCL, hashes and script tools.
+2. CTF's and pentest walkthroughs.
+3. Customized TCP reverse shell for my """"cloud"""".
+4. Customized "Master shell" for Web analysis.
