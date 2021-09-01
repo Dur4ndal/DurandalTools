@@ -1,5 +1,9 @@
 #!/bin/bash
 
+#Consiste no gerador e comparador de hashes para descoberta de senhas
+#Utiliza a wordlist de senhas do JOHN (altere o PATH caso possua wordlist melhor)
+#POR: Rodrigo Mamédio Arrelaro
+
 for palavra in $(cat /usr/share/john/password.lst)
 do
 echo -n $palavra | md5sum |cut -d " " -f 1 >senhaMD5
@@ -22,7 +26,7 @@ echo $senha >> TESTEDESSAPORRA
 #echo $senha
 
 #Caso o user quiser, apenas passar o argv[1] para ser comparado
-if [ $senha == "806825f0827b628e81620f0d83922fb2c52c7136" ];
+if [ $senha == "806825f0827b628e81620f0d83922fb2c52c7136" ]; #TROQUE AQUI o hash a ser descoberto
 then
         echo "Senha encontrada --------->" $palavra
         break
