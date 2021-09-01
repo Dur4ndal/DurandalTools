@@ -1,0 +1,26 @@
+#!/usr/bin/python3
+
+# O programa consiste em encontrar a quantidade de funcoes (listando-as) dentro de um executável (.exe) qualquer.
+# Funcional em PYTHON 3
+# Por: Rodrigo Mamedio Arrelaro
+
+import pefile, sys
+
+#Tratamento de erro basico para evitar retorno de terminal
+try:
+    os_path = sys.argv[1]
+
+    PEfile = pefile.PE(os_path)
+
+    qtd_dll=0
+    qtd_func=0
+    for entry in PEfile.DIRECTORY_ENTRY_IMPORT:
+        qtd_dll = qtd_dll+1
+        print ("\nNome da DLL importada: "+ str(entry.dll.decode('utf-8')) +"\nNome das funcoes: ")
+        for func in entry.imports:
+            print ("    "+str(func.name.decode('utf-8')))
+            qtd_func= qtd_func+1
+        print ("-------------------------------------\n")
+    print ("Foram utilizadas "+str(qtd_func)+" funcoes. E "+str(qtd_dll)+" DLLs foram importadas.")
+except:
+    print ("Funcionamento do programa:\n[*]        Desafio.py 'Path para o executavel'")
